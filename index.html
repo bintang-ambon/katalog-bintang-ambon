@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Digital - Toko Bintang Ambon</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- BANNER KHUSUS ADMIN TOKO BINTANG (Hanya muncul saat Admin Login) -->
+    <div id="adminBannerBar" class="admin-banner-bar" style="display: none;">
+        <div class="container admin-banner-content">
+            <div class="admin-banner-info">
+                <i class="fa-solid fa-shield-halved"></i>
+                <strong>MODE ADMIN AKTIF:</strong>
+                <span>Anda dapat mengedit foto & teks semua produk di bawah ini.</span>
+            </div>
+            <div class="admin-banner-actions">
+                <button class="btn-banner-add" onclick="openAddProductModal()">
+                    <i class="fa-solid fa-plus"></i> Tambah Produk
+                </button>
+                <button class="btn-banner-export" onclick="exportProductsJsFile()" title="Unduh data produk yang sudah diedit">
+                    <i class="fa-solid fa-download"></i> Unduh Data Baru
+                </button>
+                <button class="btn-banner-pin" onclick="openChangePinModal()" title="Ubah PIN / Kata Sandi Admin">
+                    <i class="fa-solid fa-key"></i> Ganti PIN
+                </button>
+                <button class="btn-banner-logout" onclick="logoutAdmin()" title="Kunci kembali tampilan pelanggan">
+                    <i class="fa-solid fa-lock"></i> Kunci / Keluar Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP BAR INFO -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Jl. Diponegoro / Pusat Kota Ambon, Maluku</span>
+            </div>
+            <div class="top-bar-item">
+                <i class="fa-solid fa-clock"></i>
+                <span>Buka Setiap Hari: 08.00 - 21.30 WIT</span>
+            </div>
+            <div class="top-bar-item cs-top-card">
+                <a href="#" id="topbar-wa-link" target="_blank" class="cs-profile-pill">
+                    <div class="cs-avatar-wrap">
+                        <img src="cs-bintang.jpg" alt="CS Toko Bintang Ambon" class="cs-avatar-img">
+                        <span class="status-dot"></span>
+                        <span class="status-pulse"></span>
+                    </div>
+                    <div class="cs-profile-info">
+                        <span class="cs-name">CS Anastasya (Online)</span>
+                        <span class="cs-phone"><i class="fa-brands fa-whatsapp"></i> <span id="topbar-wa-display">0811-4140-1975</span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER & NAVBAR -->
+    <header class="header">
+        <div class="container navbar">
+            <div class="brand-logo" onclick="resetFilter()" title="Toko Bintang Ambon">
+                <img src="logo-bintang.jpg" alt="Logo Toko Bintang Ambon" class="brand-logo-img">
+                <div class="logo-text">
+                    <h1>BINTANG</h1>
+                    <span>AMBON • GADGET ACCESSORIES</span>
+                </div>
+            </div>
+
+            <!-- Search Bar Header -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Cari casing, charger, tempered glass, TWS...">
+                <button id="clearSearch" class="clear-btn" title="Hapus pencarian"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="header-action">
+                <a href="#" id="header-hubungi-cs" class="btn-cs-header" target="_blank">
+                    <div class="cs-avatar-wrap-header">
+                        <img src="cs-bintang.jpg" alt="CS Toko Bintang Ambon" class="cs-avatar-img-header">
+                        <span class="status-dot-header"></span>
+                        <span class="pulse-ring"></span>
+                    </div>
+                    <div class="cs-header-info">
+                        <span class="cs-header-tag"><i class="fa-solid fa-circle"></i> CS Online</span>
+                        <span class="cs-header-phone">0811-4140-1975</span>
+                    </div>
+                    <i class="fa-brands fa-whatsapp cs-header-icon"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge-hero"><i class="fa-solid fa-fire"></i> Pusat Aksesoris HP Terlengkap di Ambon</span>
+                <h2>Katalog Produk Pilihan Toko Bintang Ambon</h2>
+                <p>Temukan ribuan casing kekinian, tempered glass, pengisi daya cepat, earphone TWS, dan aksesoris
+                    gadget terlengkap. Klik barang pilihan Anda untuk langsung terhubung dengan Admin CS kami dan
+                    menanyakan harga serta ketersediaan stok!</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <strong>100%</strong>
+                        <span>Original & Terjamin</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Ready Stock</strong>
+                        <span>Di Toko Ambon</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Fast Respon</strong>
+                        <span>WhatsApp CS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATALOG UTAMA -->
+    <main class="container main-content">
+        <!-- Filter Kategori Bar -->
+        <div class="category-filter-wrapper">
+            <div class="filter-header">
+                <div class="filter-title-wrap">
+                    <h3><i class="fa-solid fa-layer-group"></i> Kategori Produk</h3>
+                    <span id="productCountBadge" class="count-badge">Menampilkan 0 produk</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="btn-admin-add" onclick="openAddProductModal()" title="Tambah Produk Baru">
+                        <i class="fa-solid fa-plus"></i> Tambah Produk
+                    </button>
+                    <button class="btn-admin-reset" onclick="resetToDefaultProducts()" title="Kembalikan ke data produk awal">
+                        <i class="fa-solid fa-rotate-left"></i> Reset Bawaan
+                    </button>
+                </div>
+            </div>
+            <div class="category-buttons" id="categoryContainer">
+                <!-- Tombol kategori akan di-render oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- Grid Produk -->
+        <section class="product-grid" id="productGrid">
+            <!-- Kartu produk akan di-render secara dinamis oleh JavaScript -->
+        </section>
+
+        <!-- Pesan Tidak Ditemukan -->
+        <div id="noProductsFound" class="empty-state" style="display: none;">
+            <i class="fa-regular fa-face-frown"></i>
+            <h3>Produk tidak ditemukan</h3>
+            <p>Coba gunakan kata kunci pencarian yang lain atau pilih kategori Semua.</p>
+            <button class="btn btn-secondary" onclick="resetFilter()">Reset Pencarian</button>
+        </div>
+    </main>
+
+    <!-- MODAL DETAIL PRODUK -->
+    <div class="modal" id="productModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" title="Tutup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Konten dinamis di-inject JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDIT / GANTI FOTO & TEKS PRODUK -->
+    <div class="modal" id="editProductModal">
+        <div class="modal-overlay" onclick="closeEditModal()"></div>
+        <div class="modal-box modal-box-edit">
+            <button class="modal-close" onclick="closeEditModal()" title="Tutup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="edit-modal-header">
+                <h3 id="editModalHeading"><i class="fa-solid fa-pen-to-square"></i> Edit Foto & Teks Produk</h3>
+                <p>Ubah foto, nama, atau deskripsi. Begitu disimpan, produk akan <strong>langsung otomatis terganti</strong> di katalog!</p>
+            </div>
+            <form id="editProductForm" onsubmit="saveProductChanges(event)" class="edit-product-form">
+                <input type="hidden" id="editProductId">
+
+                <!-- UPLOAD / GANTI FOTO PRODUK -->
+                <div class="form-group-image">
+                    <label class="form-label"><i class="fa-solid fa-image"></i> Foto Produk</label>
+                    <div class="image-uploader-wrapper">
+                        <div class="image-preview-box">
+                            <img id="editImagePreview" src="" alt="Pratinjau Foto Produk">
+                        </div>
+                        <div class="image-inputs">
+                            <label class="btn-upload-file">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Pilih Foto dari Laptop / HP
+                                <input type="file" id="editImageFileInput" accept="image/*" onchange="handleProductImageFile(event)">
+                            </label>
+                            <span class="or-separator">— atau gunakan link URL foto —</span>
+                            <input type="url" id="editImageUrlInput" placeholder="https://contoh.com/foto.jpg" oninput="handleProductImageUrl(event)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-2">
+                        <label class="form-label" for="editProductName">Nama Produk *</label>
+                        <input type="text" id="editProductName" required placeholder="Contoh: Softcase Silicon Macaron iPhone">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label class="form-label" for="editProductCategory">Kategori *</label>
+                        <select id="editProductCategory" required>
+                            <option value="Case HP">Case HP</option>
+                            <option value="Tempered Glass">Tempered Glass</option>
+                            <option value="Charger & Kabel">Charger & Kabel</option>
+                            <option value="Audio & TWS">Audio & TWS</option>
+                            <option value="Powerbank">Powerbank</option>
+                            <option value="Holder & Tripod">Holder & Tripod</option>
+                            <option value="Aksesoris">Aksesoris</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="editProductTag">Label Tag</label>
+                        <input type="text" id="editProductTag" placeholder="Contoh: BEST SELLER, NEW, PROMO">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="editProductStatus">Status Stok</label>
+                        <input type="text" id="editProductStatus" placeholder="Contoh: Ready Stock, Free Pasang">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="editProductDesc">Deskripsi Singkat *</label>
+                    <textarea id="editProductDesc" rows="3" required placeholder="Tuliskan spesifikasi, bahan, atau keunggulan produk..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Batal</button>
+                    <button type="submit" class="btn btn-primary btn-save">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan & Perbarui Otomatis
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFIKASI TOAST SUKSES -->
+    <div id="toastNotification" class="toast-notification">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Produk berhasil diperbarui!</span>
+    </div>
+
+    <!-- FLOATING WHATSAPP CS WIDGET (BISA DIGESER / DRAGGABLE BEBAS) -->
+    <div class="floating-cs-container" id="draggableCsWidget" title="Klik & tahan untuk menggeser posisi ke mana saja">
+        <!-- Grip Handle Petunjuk Geser -->
+        <div class="drag-handle-hint" title="Tahan & geser posisi">
+            <i class="fa-solid fa-grip-vertical"></i>
+        </div>
+
+        <!-- Chat Bubble Popup Animation -->
+        <a href="#" id="floatingWaBubble" class="cs-chat-bubble" target="_blank">
+            <span class="bubble-tag"><i class="fa-solid fa-headset"></i> CS Bintang Ambon Online</span>
+            <span class="bubble-text">Halo! Mau tanya tipe HP atau aksesoris? Chat Kak Anastasya yuk! 👋</span>
+        </a>
+
+        <!-- Floating CS Button with animated avatar -->
+        <a href="#" id="floatingWaBtn" class="floating-cs-button" target="_blank" title="Klik untuk chat WhatsApp, atau geser posisi">
+            <div class="floating-avatar-box">
+                <img src="cs-bintang.jpg" alt="CS Toko Bintang Ambon" class="floating-avatar-img" draggable="false">
+                <span class="floating-status-dot"></span>
+                <span class="floating-pulse-wave"></span>
+            </div>
+            <div class="floating-wa-badge">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col brand-col">
+                <div class="brand-logo footer-logo">
+                    <img src="logo-bintang.jpg" alt="Logo Toko Bintang Ambon" class="brand-logo-img-footer">
+                    <div class="logo-text">
+                        <h3>TOKO BINTANG AMBON</h3>
+                        <span>Rajanya Aksesoris Smartphone</span>
+                    </div>
+                </div>
+                <p>Toko ritel aksesoris HP dan gadget terdepan di Ambon. Melayani pembelian eceran dan grosir dengan
+                    pilihan terlengkap dan pelayanan ramah.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Informasi Toko</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> Jl. Diponegoro / Pusat Pertokoan Kota Ambon, Maluku
+                    </li>
+                    <li><i class="fa-solid fa-clock"></i> Senin - Minggu: 09:00 - 21:30 WIT</li>
+                    <li><i class="fa-solid fa-phone"></i> Hubungi CS via WhatsApp</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Keuntungan Belanja</h4>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Cek ketersediaan tipe HP langsung ke CS</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Bisa pasang tempered glass langsung di toko</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Garansi test untuk produk kabel & charger</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Melayani pengiriman area Ambon & sekitarnya</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© 2026 Katalog Digital Toko Bintang Ambon. Hak Cipta Dilindungi.</p>
+                <a href="javascript:void(0)" onclick="openAdminLoginModal()" class="admin-login-link" title="Khusus Admin & Staf Toko Bintang">
+                    <i class="fa-solid fa-lock"></i> Akses Admin Toko
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL LOGIN ADMIN TOKO BINTANG -->
+    <div class="modal" id="adminLoginModal">
+        <div class="modal-overlay" onclick="closeAdminLoginModal()"></div>
+        <div class="modal-box modal-box-login">
+            <button class="modal-close" onclick="closeAdminLoginModal()" title="Tutup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="admin-login-header">
+                <div class="admin-icon-lock">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Masuk Mode Admin Toko Bintang</h3>
+                <p>Khusus pengelola Toko Bintang untuk mengedit foto, teks produk, dan menambah barang baru.</p>
+            </div>
+            <form onsubmit="submitAdminLogin(event)" class="admin-login-form">
+                <div class="form-group">
+                    <label for="adminPinInput" class="form-label">PIN Keamanan Admin:</label>
+                    <input type="password" id="adminPinInput" required placeholder="Masukkan PIN..." autocomplete="off">
+                    <span class="pin-hint"><i class="fa-solid fa-key"></i> PIN Default: <strong>bintang1975</strong></span>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAdminLoginModal()">Batal</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-unlock"></i> Buka Mode Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL GANTI PIN ADMIN -->
+    <div class="modal" id="changePinModal">
+        <div class="modal-overlay" onclick="closeChangePinModal()"></div>
+        <div class="modal-box modal-box-login">
+            <button class="modal-close" onclick="closeChangePinModal()" title="Tutup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="admin-login-header">
+                <div class="admin-icon-lock" style="background: var(--blue-soft); color: var(--blue-primary);">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <h3>Ganti PIN Admin Toko</h3>
+                <p>Ubah PIN keamanan untuk masuk ke mode admin pengelola katalog.</p>
+            </div>
+            <form onsubmit="submitChangePin(event)" class="admin-login-form">
+                <div class="form-group">
+                    <label for="oldPinInput" class="form-label">PIN Lama:</label>
+                    <input type="password" id="oldPinInput" required placeholder="Masukkan PIN lama..." autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="newPinInput" class="form-label">PIN Baru:</label>
+                    <input type="password" id="newPinInput" required placeholder="Minimal 4 karakter..." autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPinInput" class="form-label">Konfirmasi PIN Baru:</label>
+                    <input type="password" id="confirmPinInput" required placeholder="Ulangi PIN baru..." autocomplete="off">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeChangePinModal()">Batal</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-check"></i> Simpan PIN Baru
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
