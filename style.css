@@ -280,10 +280,12 @@ body.admin-mode-active .btn-modal-edit {
 .cs-avatar-img {
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     border: 1.5px solid var(--blue-light);
+    background-color: #FFFFFF;
     display: block;
 }
 
@@ -486,10 +488,12 @@ body.admin-mode-active .btn-modal-edit {
 .cs-avatar-img-header {
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     border: 2px solid var(--blue-light);
+    background-color: #FFFFFF;
     display: block;
 }
 
@@ -1206,10 +1210,12 @@ body.admin-mode-active .btn-modal-edit {
 .cs-avatar-mini {
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     border: 2px solid var(--blue-light);
+    background-color: #FFFFFF;
     display: block;
 }
 
@@ -1592,9 +1598,10 @@ body.admin-mode-active .btn-modal-edit {
 .floating-avatar-img {
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     border: 3.5px solid var(--blue-light);
     background-color: #FFFFFF;
     display: block;
@@ -1862,6 +1869,22 @@ body.admin-mode-active .btn-modal-edit {
 }
 
 @media (max-width: 600px) {
+    .btn-cs-header {
+        padding: 4px 10px 4px 4px;
+        gap: 6px;
+    }
+    .cs-header-phone {
+        display: none; /* Sembunyikan no telp panjang di HP agar muat & rapi */
+    }
+    .cs-header-tag {
+        font-size: 0.72rem;
+    }
+    .floating-cs-container {
+        bottom: 18px !important;
+        right: 18px !important;
+        left: auto !important;
+        top: auto !important;
+    }
     .top-bar {
         display: none; /* Hemat ruang layar di HP */
     }
